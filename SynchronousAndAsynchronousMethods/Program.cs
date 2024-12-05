@@ -5,10 +5,38 @@
         static void Main(string[] args)
         {
             //同步方法
-            SynchronousMethod();
+            // SynchronousMethod();
 
             //异步方法
-            AsynchronousMethod().Wait();
+            //AsynchronousMethod().Wait();
+
+            ProcessDataAsync().Wait();
+            Console.ReadKey();
+        }
+
+        /// <summary>
+        /// 异步方法
+        /// </summary>
+        /// <returns></returns>
+        public static async Task ProcessDataAsync()
+        {
+            Console.WriteLine("开始处理数据");
+            // 异步任务启动，但没有 await，直接执行后续代码
+            var task = LongRunningOperationAsync();
+            Console.WriteLine("数据处理中");
+            //在没有等待的情况下直接执行
+            Console.WriteLine("数据处理结束");
+        }
+
+        /// <summary>
+        /// 长时间等待
+        /// </summary>
+        /// <returns></returns>
+        public static async Task LongRunningOperationAsync()
+        {
+            await Task.Delay(5000);
+            // 模拟长时间操作
+             Console.WriteLine("长时间操作完成");
         }
 
 
