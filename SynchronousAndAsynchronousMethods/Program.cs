@@ -10,6 +10,7 @@
             //异步方法
             //AsynchronousMethod().Wait();
 
+            //演示异步方法后，可以执行其他方法
             ProcessDataAsync().Wait();
             Console.ReadKey();
         }
